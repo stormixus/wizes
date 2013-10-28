@@ -1,10 +1,17 @@
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
-@import url('css/flat-ui.css');
+@import url('bootstrap/bootstrap.css');
+@import url('bootstrap/bootstrap-theme.css');
+@import url('css/wizes-ui.css');
+@import url('//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css');
 /* Typography And Basic Style */
 *{
     zoom: 1;
 }
 body{
+}
+
+body.pushed {
+	margin-left: 275px;
 }
 
 /* Use the following CSS code if you want to use data attributes for inserting your icons */
@@ -34,364 +41,373 @@ body{
 .clearfix:after {
   clear: both;
 }
-.drop-ie-gradient {
-  filter: unquote("progid:DXImageTransform.Microsoft.gradient(enabled = false)");
+
+/*================================
+header
+================================*/
+header {
+	background: #1c1b2d;
 }
-.dropdown-arrow-inverse {
-  border-bottom-color: #34495e !important;
-  border-top-color: #34495e !important;
+#adminControl {
+	position: fixed;
+	z-index: 1031;
 }
-.prettyprint {
-  background-color: transparent;
-  border-color: #e7e9ec;
-  border-radius: 6px;
-  border-width: 2px;
-  overflow: auto;
-  word-wrap: normal;
-  white-space: pre;
+header .nav-toggle {
+	color: #FFF;
+	background: #1c1b2d;
+	border:none;
 }
-.prettyprint.linenums {
-  overflow: visible;
-  white-space: pre;
-  white-space: pre-wrap;
-  word-wrap: break-word;
+header .nav-toggle.active{
+	color: #FFF;
+	background: #1c1b2d;
 }
-.demo-headline {
-  color: #1abc9c;
-  font: 700 118px/1.1 Helvetica, Arial, sans-serif !important;
-  margin-bottom: 50px;
-  padding: 40px 0;
-  text-align: center;
-  word-wrap: break-word;
+body.pushed header {margin-left: 275px;}
+nav.main > ul > li > a {
+	font-size: 16px;
+	font-weight: 400;
+	color: #FFF;
 }
-.demo-row {
-  margin: 0 auto;
-  padding: 0 20px 50px;
-  width: 940px;
-  *zoom: 1;
+nav.main > ul > li > a:hover, nav.main > ul > li.active > a {
+	color: #FFF;
 }
-.demo-row:before,
-.demo-row:after {
-  display: table;
-  content: "";
+/* lvl 2 */
+
+nav.main > ul > li > ul li {
+	border-color: #ededed;
 }
-.demo-row:after {
-  clear: both;
+nav.main > ul > li > ul a {
+	color: #7f949c;
 }
-.demo-row .demo-heading-note,
-.demo-row .demo-text-note {
-  display: block;
-  width: 260px;
-  position: absolute;
-  bottom: 10px;
-  left: 0;
-  font-size: 13px;
-  line-height: 13px;
-  color: #c0c1c2;
-  font-weight: 400;
+nav.main > ul > li > ul a:hover {
+	color: #1c1b2d;
+	background: #fff;
 }
-.demo-row .demo-text-note {
-  bottom: auto;
-  top: 10px;
+header {
+	min-height: 93px;
+	border-bottom: 7px solid transparent;
 }
-.demo-row.menu-row {
-  padding: 50px 20px 10px;
+.fixed-header header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 100;
 }
-.demo-row.typography-row .demo-content {
-  float: none;
-  margin-left: 20px;
-  padding-top: 30px;
-  width: auto;
-  clear: both;
+header .header-inner {
+	position: relative;
+	padding: 0 30px;
 }
-.demo-row.typography-row .demo-type-example {
-  padding-left: 265px;
-  margin-bottom: 40px;
-  position: relative;
+
+header .branding {
+	position: absolute;
+	top: 30px;
 }
-.demo-col {
-  float: left;
-  margin: 0 20px;
-  width: 270px;
+header .branding a {
+	max-width: 170px;
+	max-height: 42px;
+	color: #fff;
+	font-size: 50px;
+	text-decoration: none;
 }
-.demo-content {
-  float: left;
-  margin-left: 20px;
-  width: 580px;
+
+header .nav-toggle {
+	display: none;
+	position: relative;
+	float: right;
+	margin-top: 20px;
+	width: 60px;
+	height: 60px;
+	text-align: center;
 }
-.demo-content.demo-content-article {
-  font-size: 18px;
+header .nav-toggle i {
+	font-size: 21px;
 }
-.demo-content.demo-content-article p {
-  margin-bottom: 20px;
+nav.main {
+	position: relative;
+	float: right;
 }
-.demo-content.demo-content-article ul {
-  list-style-type: none;
-  margin-left: 0;
+nav.main select {
+	display: none;
+	border-radius: 5px;
+	border: 0;
+	cursor: pointer;
 }
-.demo-content.demo-content-article li {
-  line-height: 27px;
-  padding: 0 0 5px;
+nav.main > ul {
+	position: relative;
+	z-index: 30;
 }
-.demo-content-wide {
-  clear: both;
-  margin: 0 20px;
-  *zoom: 1;
+nav.main > ul > li {
+	float: left;
+	position: relative;
+	list-style: none;
 }
-.demo-content-wide:before,
-.demo-content-wide:after {
-  display: table;
-  content: "";
+nav.main > ul > li > a {
+	display: block;
+	margin-bottom: 0px;
+	padding: 0 35px;
+	height: 100px;
+	outline: 0;
 }
-.demo-content-wide:after {
-  clear: both;
+nav.main > ul > li > a span {
+	position: relative;
+	top: 30px;
 }
-.demo-title {
-  float: left;
-  margin: -0.5em 20px 0;
-  width: 240px;
-  font: 700 24.5px/40px Helvetica, Arial, sans-serif;
+nav.main > ul > li > a:hover {
+	text-decoration: none;
 }
-.demo-title h1,
-.demo-title h2,
-.demo-title h3,
-.demo-title h4 {
-  margin-top: 0;
-  font-family: Helvetica, Arial, sans-serif;
+/* lvl 2 */
+nav.main > ul > li > ul {
+	margin: 0;
+	padding: 0;
+	background: #292a2c;
+	opacity: .95;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=95)";
+	filter: alpha(opacity=95);
+	display: none;
+	position: absolute;
+	left: 0px;
+	font-size: 0.9em;
 }
-.demo-title h1,
-.demo-title h2,
-.demo-title h3 {
-  line-height: 40px !important;
+nav.main > ul > li > ul li {
+	border-top: 1px solid transparent;
+	list-style: none;
 }
-.demo-title h3 {
-  font-size: 24.5px !important;
+nav.main > ul > li > ul li:first-child {
+	border: 0;
 }
-.demo-title small {
-  color: #c0c1c2;
-  font-size: 13px;
-  font-weight: 400;
+nav.main > ul > li > ul a {
+	font-size: 14px;
+	font-weight: 400;
+	line-height:30px;
+	color: #777777;
+	display: block;
+	padding: 7px 40px;
+	white-space: nowrap;
 }
-.demo-buttons .btn,
-.demo-inputs .control-group {
-  margin-bottom: 20px;
+nav.main > ul > li > ul a:hover {
+	text-decoration: none;
+	color:#E74C3C;
 }
-.demo-navigation .demo-title {
-  margin-top: 10px;
+nav.main > ul > li > a{
+	transition:All .4s ease;
+	-webkit-transition:All .4s ease;
+	-moz-transition:All .4s ease;
+	-o-transition:All .4s ease;
 }
-.demo-pager {
-  margin-top: -10px;
+nav.main > ul > li > a:hover,.branding a:hover{
+	color:#E74C3C;
 }
-.demo-tooltips {
-  height: 100px;
+
+/*=============================
+ Top
+ ==============================*/
+section#top {
+	margin-top: 94px;
+	margin-bottom: 20px;
 }
-.demo-tooltips .tooltip {
-  left: -8px !important;
-  position: relative !important;
-  top: -8px !important;
+/*=============================
+ Breadcrumb
+ ==============================*/
+.bc-header {
+    padding: 30px 15px 40px; /* side padding builds on .container 15px, so 30px */
+    font-size: 16px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .15);
+    background: url(image/bg_jelly.jpg);
+    -webkit-background-size: cover; /* For WebKit*/
+    -moz-background-size: cover;    /* Mozilla*/
+    -o-background-size: cover;      /* Opera*/
+    background-size: cover;         /* Generic*/
 }
-.demo-tooltips .tooltip-inner {
-  max-width: 100%;
-  width: auto;
+
+.bc-header h1 {
+    color: #fff;
 }
-.demo-popovers .popover {
-  display: block;
-  margin: 0 13px 0 -3px;
-  position: relative;
-  width: auto;
+
+.bc-header p {
+    font-weight: 300;
+    line-height: 1.5;
 }
-.demo-social-buttons .btn {
-  clear: left;
-  float: left;
-  margin-bottom: 17px;
+
+.bc-header .container {
+    position: relative;
 }
-.demo-headings {
-  margin-bottom: 12px;
+
+@media screen and (min-width: 768px) {
+    .bc-header {
+        font-size: 21px;
+        text-align: left;
+    }
+
+    .bc-header h1 {
+        font-size: 60px;
+        line-height: 1;
+    }
 }
-.demo-tiles {
-  margin-bottom: 46px;
+
+@media screen and (min-width: 992px) {
+    .bc-header h1,
+    .bc-header p {
+        margin-right: 380px;
+    }
 }
-.demo-icons {
-  font-size: 32px;
-  margin-left: -15px;
+
+
+/*=============================
+ Pages
+ ==============================*/
+#page{
+	position:relative;
+	padding-top:30px;
 }
-.demo-icons > span {
-  display: inline-block;
-  margin: 0 0 32px 35px;
-  width: 32px;
+
+/*=============================
+ Elements
+ ==============================*/
+.element{
+	position: relative;
 }
-@media (max-width: 480px) {
-  .demo-icons > span {
-    margin-left: 16px;
-    margin-right: 16px;
-  }
-}
-.demo-icons-tooltip {
-  bottom: 0;
-  color: #c2c8cf;
+
+.element-header {
+  background-color: #f0faf8;
+  border-top-color: #e2edeb;
+  border-top: 2px solid;
   font-size: 12px;
-  left: 100%;
-  margin-left: 0 !important;
-  position: absolute;
-  width: 80px;
+  margin-bottom: 0px;
+  padding: 12px 0 24px;
+  position: relative;
 }
-.demo-inline {
-  display: inline-block;
+.element-title{
+	margin-left: 6px;
+	float: left;
 }
-.demo-labels {
-  font-size: 19px;
+.element-icons{
+	position: absolute;
+	right: 6px;
+	float: right;
+	z-index: 200;
 }
-.demo-labels .visible-lg {
-  display: inline !important;
+
+.sortable-placeholder {
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	border:2px dashed #e5e5e5;
+	background: #efecec
+	rgba(222,221,221,0.5);
+	border-radius: 10px;
 }
-@media (max-width: 767px) {
-  .demo-labels .visible-lg {
-    display: none !important;
-  }
+.handle {
+	cursor: move;
+	position: absolute;
+	left: 6px;
+	z-index: 200;
+	
 }
-.demo-illustrations {
-  margin-top: 40px;
-}
-.demo-illustrations .demo-content-wide {
-  margin: 0 0 0 -66px;
-  padding-top: 20px;
-}
-.demo-illustrations .demo-content-wide > div {
-  float: left;
-  width: 100px;
-  height: 100px;
-  line-height: 100px;
-  margin: 0 0 80px 87px;
-  text-align: center;
-  vertical-align: middle;
-}
-.demo-illustrations img {
-  display: inline-block;
-  max-height: 100px;
-  max-width: 100px;
-  vertical-align: middle;
-}
-.demo-dialog {
-  padding: 13px 20px 15px;
-}
-.demo-dialog .flat {
-  width: 300px;
-}
-.static-modal-backdrop {
-  background-color: #243342;
-  padding: 62px 14px;
-  margin-bottom: 50px;
+
+.errmsg{color: #bc4343;}
+
+/*=============================
+ section Weather
+ ==============================*/
+section.weather {
   width: 100%;
-}
-.static-modal-backdrop .modal {
-  bottom: auto;
-  display: block;
-  left: auto;
-  position: relative;
-  right: auto;
-  top: auto;
-  z-index: 1;
-  overflow: hidden;
-  padding-bottom: 20px;
-}
-.static-modal-backdrop .modal-dialog {
-  padding: 0;
-}
-.components-static-modal .modal {
-  bottom: auto;
-  display: block;
-  left: auto;
-  position: relative;
-  right: auto;
-  top: auto;
-  z-index: 1;
-  overflow: visible;
-}
-.components-static-modal .modal-dialog,
-.components-static-modal .modal-content {
-  width: auto;
-}
-.components-static-modal .modal-dialog {
-  padding: 0;
-}
-.demo-sidebar {
   height: 100%;
-  left: 0;
-  margin: 0;
-  list-style-type: none;
-  overflow: auto;
-  position: fixed;
-  top: 0;
-  padding: 0;
-  width: 150px;
-  z-index: 10000;
-  background-color: #f3f4f5;
-  -webkit-backface-visibility: hidden;
-  -webkit-font-smoothing: subpixel-antialiased;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  float: left;
+  position: relative;
+  background-color: #1f222a;
+  border-radius: 7px;
 }
-.demo-sidebar li:first-child a {
-  padding-top: 20px;
+section.weather h3 {
+  position: relative;
+  color: #fff;
 }
-.demo-sidebar a {
+section.weather h3 i.wi-up{
+	float: right;
+}
+section.weather .temperature {
+  padding: 20px 0px;
+  color: #7c8089;
+  font-size: 6em;
+  position: relative;
+}
+section.weather .temperature h3 {
+  display: inline;
+  color: #eeeeee;
+  float: right;
+}
+section.weather .temperature h3 span.degree-symbol {
+  display: inline-block;
+  margin: 0px 0px 0px 10px;
+  font-size: 0.6em;
+  vertical-align: top;
+}
+section.weather .temperature h3 span.celcius {
+  display: inline-block;
+  margin: 10px 0px 0px 15px;
+  color: #3d414c;
+  font-size: 0.3em;
+  vertical-align: top;
+}
+section.weather .temperature h4 {
+  display: inline;
+  color: #eeeeee;
+  float: right;
+  position: absolute;
+  right:0px;
+  width: 130px;
+  text-align: right;
+}
+section.weather .temperature h4 i.fa {
+	float: left !important;
+}
+section.weather .temperature h4 span.degree-symbol {
+  display: inline-block;
+  margin: 0px 0px 0px 10px;
+  font-size: 0.6em;
+  vertical-align: top;
+}
+section.weather .temperature h4 span.celcius {
+  display: inline-block;
+  margin: 10px 0px 0px 15px;
+  color: #3d414c;
+  font-size: 0.3em;
+  vertical-align: top;
+}
+section.weather .temperature h4.high {
+  top:60px;
+}
+section.weather .temperature h4.low {
+  top:90px;
+}
+
+section.weather ul {
+  padding: 5px;
+}
+section.weather ul li {
   display: block;
-  padding: 7px 20px;
+  float: left;
+  color: #3d414c;
+  font-size: 2em;
+  margin-right: 20px;
 }
-@media (max-width: 767px) {
-  .hide-on-tablets {
-    display: none;
-  }
-  .demo-row {
-    margin-bottom: 0;
-    margin-left: 0;
-    padding-left: 0;
-    padding-right: 0;
-    width: auto;
-  }
-  .demo-col,
-  .demo-content,
-  .demo-content-wide,
-  .demo-title {
-    float: none;
-    margin: 0 0 18px !important;
-    padding: 0 !important;
-    width: auto;
-  }
-  .demo-headline {
-    font-size: 66px !important;
-    text-align: left;
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-  .demo-inline {
-    display: block;
-  }
-  .demo-navigation .btn-toolbar {
-    margin: 0;
-  }
-  .demo-navigation .pager {
-    display: block;
-    margin-left: 0 !important;
-    margin-bottom: 20px;
-  }
-  .typography-row .demo-type-example {
-    padding-left: 0 !important;
-  }
-  .typography-row .demo-heading-note,
-  .typography-row .demo-text-note {
-    position: static !important;
-    margin: 0 0 10px;
-  }
-  .demo-illustrations .demo-content-wide > div {
-    margin-left: 67px;
-  }
+section.weather ul li:last-child {
+  margin-right: 0px;
 }
-@media (max-width: 480px) {
-  .demo-illustrations .demo-content-wide > div {
-    margin-left: 23px;
-  }
-  .demo-navigation .mll.pvl {
-    padding: 0;
-    margin-left: 0 !important;
-    margin-bottom: 20px;
-  }
+section.weather ul li span {
+  padding-left: 10px;
+  color: #eeeeee;
+  font-size: 0.6em;
+  line-height: 30px;
+  vertical-align: top;
+}
+
+/*=============================
+ section map
+ ==============================*/
+ 
+#map_canvas{
+	margin-bottom: 20px;
 }

@@ -1,33 +1,22 @@
-<div class="col-md-4 element">
+<?php 
+include  $g['path_layout'].$d['layout']['dir'].'/_elements/includes/common.php';
+?>
+
+<div class="col-md-<?php echo $elekey['col']?> element"<?php if($my['admin']):?><?php echo $dataset;?><?php endif?>>
 	<div class="element-header">
-		<div class="element-title">리스트</div>
-		<div class="element-icons">
-			<div class="element-switchs pull-right">
-				<a href="javascript:;" class="setting-element"><i class='fui-gear'></i></a>
-				<a href="javascript:;" class="remove-element"><i class='fui-cross'></i></a>
-			</div>
-		</div>
+		<div class="element-title"><?php include  $g['path_layout'].$d['layout']['dir'].'/_elements/includes/handle.php';?><a href="<?php echo utf8_urldecode($elekey['link'])?>"><?php echo urldecode($elekey['eletitle'])?></a></div>
+		<?php 
+		include  $g['path_layout'].$d['layout']['dir'].'/_elements/includes/seticons.php';
+		?>
 	</div>
+	
 	<ul class="list-group">
-	  <li class="list-group-item">
-	    <span class="badge">2013.09.24</span>
-	    wizes 란?
-	  </li>
-	  <li class="list-group-item">
-	    <span class="badge">2013.09.18</span>
-	    bootstrap에 관하여...
-	  </li>
-	  <li class="list-group-item">
-	    <span class="badge">2013.09.16</span>
-	    요소를 하나하나 추가합니다.
-	  </li>
-	  <li class="list-group-item">
-	    <span class="badge">2013.09.10</span>
-	    개발중인 프로젝트
-	  </li>
-	  <li class="list-group-item">
-	    <span class="badge">2013.09.08</span>
-	    잘 됐으면 좋겠습니다.
-	  </li>
+		<?php $_RCD=getDbArray($table['bbsdata'],($elekey['bbsid']?'bbs='.$elekey['bbsid'].' and ':'').'display=1 and site='.$_HS['uid'],'*','gid','asc',$elekey['limit'],1)?>
+		<?php while($_R=db_fetch_array($_RCD)):?>
+		<li class="list-group-item hand" onclick="goHref('<?php echo getPostLink($_R)?>')" title="<?php echo $_R[$_HS['nametype']]?>님">	    	
+    		<span class="badge"><?php echo getDateFormat($_R['d_regis'],'Y.m.d')?></span>
+    		<?php echo getStrCut($_R['subject'],$elekey['sbjcut'],'')?>
+		</li>
+		<?php endwhile?>
 	</ul>
 </div>
