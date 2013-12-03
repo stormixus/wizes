@@ -11,7 +11,7 @@ $json_a = json_decode($string, true); //json decoder
 $json_lat =  $json_a['results'][0]['geometry']['location']['lat']; // get lat for json
 $json_lng = $json_a['results'][0]['geometry']['location']['lng']; // get ing for json
 ?>
-<div class="col-md-<?php echo $elekey['col']?> element"<?php if($my['admin']):?><?php echo $dataset;?><?php endif?>>
+<div class="col-md-<?php echo $elekey['col']?> col-sm-<?php echo $elekey['col']?> element"<?php if($my['admin']):?><?php echo $dataset;?><?php endif?>>
 	<div class="element-header">
 		<div class="element-title"><?php include  $g['path_layout'].$d['layout']['dir'].'/_elements/includes/handle.php';?><a href="<?php echo utf8_urldecode($elekey['link'])?>"><?php echo urldecode($elekey['eletitle'])?></a></div>
 		<?php 

@@ -1,7 +1,4 @@
 <link rel="stylesheet" href="<?php echo $g['path_layout'].$d['layout']['dir']?>/elecss/nivo_themes/default/default.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="<?php echo $g['path_layout'].$d['layout']['dir']?>/elecss/nivo_themes/light/light.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="<?php echo $g['path_layout'].$d['layout']['dir']?>/elecss/nivo_themes/dark/dark.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="<?php echo $g['path_layout'].$d['layout']['dir']?>/elecss/nivo_themes/bar/bar.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="<?php echo $g['path_layout'].$d['layout']['dir']?>/elecss/nivo-slider.css" type="text/css" media="screen" />
 <?php
 $elett['bbsid'] = $elett['bbsid']?$elett['bbsid']:$bbsid;

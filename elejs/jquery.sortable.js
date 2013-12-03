@@ -89,7 +89,7 @@ $.fn.sortable = function(options) {
 })(jQuery);
 
 $(function(){
-	$('.sortable').sortable({
+	$('#wizes .sortable').sortable({
 		items:'.element',
 		handle:'.handle'
 	});

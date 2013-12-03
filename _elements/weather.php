@@ -1,7 +1,7 @@
 <?php 
 include  $g['path_layout'].$d['layout']['dir'].'/_elements/includes/common.php';
 ?>
-<div class="col-md-<?php echo $elekey['col']?> element"<?php if($my['admin']):?><?php echo $dataset;?><?php endif?>>
+<div class="col-md-<?php echo $elekey['col']?> col-sm-<?php echo $elekey['col']?> element"<?php if($my['admin']):?><?php echo $dataset;?><?php endif?>>
 	<div class="element-header">
 		<div class="element-title"><?php include  $g['path_layout'].$d['layout']['dir'].'/_elements/includes/handle.php';?><a href="<?php echo utf8_urldecode($elekey['link'])?>"><?php echo urldecode($elekey['eletitle'])?></a></div>
 		<?php 
@@ -9,16 +9,22 @@ include  $g['path_layout'].$d['layout']['dir'].'/_elements/includes/common.php';
 		?>
 	</div>
 <?php
-$weatherparam = 'http://api.openweathermap.org/data/2.1/find/city?lat='.$elekey['lat'].'&lon='.$elekey['lng'].'&cnt=1&units=metric';
-$wstring .= file_get_contents($weatherparam); // get json content
+$weatherparam = 'http://api.openweathermap.org/data/2.5/weather?lat='.$elekey['lat'].'&lon='.$elekey['lng'].'&cnt=1&units=metric';
+$wstring .= curl_load($weatherparam); // get json content
 $json_a = json_decode($wstring, true); //json decoder
 ?>
 	<section class="weather">
-		<?php $list = $json_a['list'][0]?>
-		<h3><?php echo $list['name']?> <i class="wi-up text-right" style="filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=<?php echo $list['wind']['deg']/10;?>);-webkit-transform: rotate(<?php echo $list['wind']['deg']?>deg);-moz-transform: rotate(<?php echo $list['wind']['deg']?>deg);-ms-transform: rotate(<?php echo $list['wind']['deg']?>deg);-o-transform: rotate(<?php echo $list['wind']['deg']?>deg);transform: rotate(<?php echo $list['wind']['deg']?>deg);"></i></h3>
+		<div class="weather-background"></div>
 		<?php 
-		$wcode = $list['weather'][0]['id'];
-		$wicon = $list['weather'][0]['icon'];
+			$list = $json_a['main'];
+			$city = $json_a['name']?$json_a['name']:urldecode($elekey['city']);
+		?>
+		<h3><?php echo $city?> <i class="wi-up text-right" style="filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=<?php echo $json_a['wind']['deg']/10;?>);-webkit-transform: rotate(<?php echo $json_a['wind']['deg']?>deg);-moz-transform: rotate(<?php echo $json_a['wind']['deg']?>deg);-ms-transform: rotate(<?php echo $json_a['wind']['deg']?>deg);-o-transform: rotate(<?php echo $json_a['wind']['deg']?>deg);transform: rotate(<?php echo $json_a['wind']['deg']?>deg);"></i></h3>
+		<?php
+		$cityv = explode('-', $city);
+		$cityv = strtolower($cityv[0]); 
+		$wcode = $json_a['weather'][0]['id'];
+		$wicon = $json_a['weather'][0]['icon'];
 		if($wcode>199&&$wcode<233) {
 			$wi = 'thunderstorm';
 		} elseif($wcode>299&&$wcode<322){
@@ -55,31 +61,54 @@ $json_a = json_decode($wstring, true); //json decoder
 			$wi = 'night-alt-cloudy-gusts';
 		} else {
 			$wi = 'refresh';
+		}
+		if(strpos($wicon,'d')!==false){
+			$cityv .=' day';
+		} else {
+			$cityv .=' night';
 		}	 
 		?>
 		<div class="temperature wi-<?php echo $wi?>">
 			<?php 
-			$condition = $list['main'];
-			$temp = round($condition['temp']- 273.15,2);
-			$tempmin = round($condition['temp_min']- 273.15,2);
-			$tempmax = round($condition['temp_max']- 273.15,2);
+			$condition = $json_a['main'];
 			?>
-		  <h3 class="current"><?php echo $temp;?>&nbsp;<i class="wi-celcius"></i></h3>
-		  <h4 class="high"><i class="fa fa-angle-up"></i>&nbsp;<?php echo $tempmax;?>&nbsp;<i class="wi-celcius"></i></h4>
-		  <h4 class="low"><i class="fa fa-angle-down"></i>&nbsp;<?php echo $tempmin;?>&nbsp;<i class="wi-celcius"></i></h4>
+		  <h3 class="current"><?php echo round($condition['temp'],2);?>&nbsp;<i class="wi-celcius"></i></h3>
+		  <h4 class="high"><i class="fa fa-angle-up"></i>&nbsp;<?php echo round($condition['temp_max'],2);?>&nbsp;<i class="wi-celcius"></i></h4>
+		  <h4 class="low"><i class="fa fa-angle-down"></i>&nbsp;<?php echo round($condition['temp_min'],2);?>&nbsp;<i class="wi-celcius"></i></h4>
 		</div>
 		
 		<ul>
 		  <li class="fa fa-leaf text-left">
-		    <span><?php echo $list['wind']['speed']?> mph</span>
+		    <span><?php echo $json_a['wind']['speed']?> mph</span>
 		  </li>
 		  <li class="fa fa-tint text-center">
 		    <span><?php echo $condition['humidity']?>%</span>
 		  </li>
+		  <?php
+		  $h_rain = $json_a['rain']['3h']?$json_a['rain']['3h']:'0';
+		  ?>
 		  <li class="fa fa-umbrella text-right">
-		    <span><?php echo $list['rain']['3h']?>%</span>
+		    <span><?php echo $h_rain?>%</span>
 		  </li>
 		</ul>
 	</section>
 </div>
-
+<?php if($elekey['flickr']=='on'):?>
+<script type="text/javascript">
+	$(window).delay(3000).bind('load',function(){
+		$.ajax({
+	  		type:'POST',
+	  		url:rooturl,
+	  		timeout: 10000,
+	  		data:{
+	  			r:'home',
+	  			_themePage:'ajax/getflickr',
+	  			tag: '<?php echo $cityv.' '.$json_a['weather'][0]['main']?$json_a['weather'][0]['main']:'question mark'?>',
+	  		},
+	  		success:function(data) {
+		  		$('.weather-background').css({'background-image':'url(' + data + ')'});
+	  		}
+	  	});
+	})
+</script>
+<?php endif?>

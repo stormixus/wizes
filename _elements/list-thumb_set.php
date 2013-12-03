@@ -18,7 +18,7 @@
 		<tr>
 			<td>게시판 선택</td>
 			<td>
-				<select name="bbsid">
+				<select name="bbsid" class="select">
 					<option value="">&nbsp;+ 전체게시물</option>
 					<option value="">----------------------------------</option>
 					<?php $BBSLIST = getDbArray($table['bbslist'],'','*','gid','asc',0,1)?>

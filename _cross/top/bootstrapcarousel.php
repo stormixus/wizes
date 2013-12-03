@@ -29,6 +29,6 @@ $_RCD=getDbArray($table['bbsdata'],($elett['bbsid']?'bbs='.$elett['bbsid'].' and
     <?php $k++; endwhile?>
   </div>
   <!-- Carousel nav -->
-  <a class="carousel-control left" href="#sectionTop" data-slide="prev">&lsaquo;</a>
-  <a class="carousel-control right" href="#sectionTop" data-slide="next">&rsaquo;</a>
+  <a class="carousel-control left icon-prev" href="#sectionTop" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+  <a class="carousel-control right icon-next" href="#sectionTop" data-slide="next"><i class="fa fa-angle-right"></i></a>
 </div>

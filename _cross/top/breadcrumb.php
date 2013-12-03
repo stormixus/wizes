@@ -9,7 +9,7 @@
 	    <?php echo $bigtitle?>
 	  </h4>
 	  <p>
-	  	<?php echo $g['location']?>
+	  	<?php echo str_replace('&gt;','',$g['location'])?>
 	  </p>
 	</div>
   </div>

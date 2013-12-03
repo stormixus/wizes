@@ -6,7 +6,7 @@
  * Free to use and abuse under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
  */
- 
+.slider-wrapper{position: relative;} 
 /* The Nivo Slider styles */
 .nivoSlider {
 	position:relative;
@@ -104,6 +104,10 @@
 .nivo-controlNav {
 	text-align:center;
 	padding: 15px 0;
+	position: absolute;
+	bottom: 10px;
+	width: 100%;
+	z-index: 10000;
 }
 .nivo-controlNav a {
 	cursor:pointer;

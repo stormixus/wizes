@@ -1,4 +1,15 @@
 <?php
+$table['laymeta'] = $DB['head'].'_s_laymeta';
+
+function curl_load($url){
+    curl_setopt($ch=curl_init(), CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT ,0); 
+	curl_setopt($ch, CURLOPT_TIMEOUT, 10); //timeout in seconds
+    $response = curl_exec($ch);
+    curl_close($ch);
+    return $response;
+}
 
 function utf8_urldecode($str) 
 { 
@@ -58,5 +69,15 @@ if (isset($_element))
 	$g['main'] = $g['path_layout'].$d['layout']['dir'].'/_elements/'.$_element.'.php';
 	include $g['main'];
 	exit;
+}
+
+if($_HP['ismain']) {
+	$pageindex = $_HS['uid'].'_main';
+} elseif($_HM['uid']) {
+	$pageindex = $_HS['uid'].'_m'.$_HM['uid'];
+} elseif($_HP['uid']) {
+	$pageindex = $_HS['uid'].'_p'.$_HP['uid'];
+} else {
+	$pageindex = $_HS['uid'].'_m'.$_HM['uid'];
 }
 ?>

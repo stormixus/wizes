@@ -1,3 +1,4 @@
 <?php
-$table['laymeta'] = 'rb_s_laymeta';
+$d['layout']['navbar'] = "inverse";
+$d['layout']['theme'] = "spacelab";
 ?>

@@ -17,14 +17,13 @@
     <div class="item">
     	<b><i class="glyphicon glyphicon-wrench"></i>&nbsp;도구</b>
     	<div class="menu">
-    		<a href="javascript:;" class="item set-mainslider" data-toggle="popover" data-direction="right" data-popover-title="popover-title_logo"  data-popover-content="popover-content_logo">로고 설정</a>
+    		<a href="javascript:;" class="item set-theme" data-toggle="popover" data-direction="right" data-popover-title="popover-title_theme"  data-popover-content="popover-content_theme">테마 설정</a>
+    		<a href="javascript:;" class="item set-navbar" data-toggle="popover" data-direction="right" data-popover-title="popover-title_navbar"  data-popover-content="popover-content_navbar">메뉴바 설정</a>
+    		<a href="javascript:;" class="item set-logo" data-toggle="popover" data-direction="right" data-popover-title="popover-title_logo"  data-popover-content="popover-content_logo">로고 설정</a>
 	    	<a href="javascript:;" class="item set-top" data-toggle="popover" data-direction="right" data-popover-title="popover-title_top"  data-popover-content="popover-content_top">탑 부분 설정</a>
-	    	<a href="javascript:;" class="item set-bcbg" data-toggle="popover" data-direction="right" data-popover-title="popover-title_top"  data-popover-content="popover-content_top">Breadcrumb 배경 설정</a>
-	    	<a href="<?php echo RW('_themePage=set-menu')?>" class="item set-menu">메뉴 설정</a>
-	    	<a href="javascript:;" class="item set-sidebar">사이드바 설정</a>
-	    	<a href="javascript:;" class="item set-template" data-toggle="popover" data-direction="right" data-popover-title="popover-title_template"  data-popover-content="popover-content_template">저장된 컨텐츠 템플릿 보기</a>
-	    	<a href="javascript:;" class="item set-footer">풋터 설정</a>
-	    	<a href="javascript:;" class="item set-ㅡmedia">미디어</a>
+	    	<!--
+	    	<a href="javascript:;" class="item set-bcbg" data-toggle="popover" data-direction="right" data-popover-title="popover-title_breadcrumb"  data-popover-content="popover-content_breadcrumb">Breadcrumb 배경 설정</a>
+	    	-->
     	</div>
     </div>
 </div>
@@ -40,8 +39,8 @@
  ==============================*/
 .sidepanel-button {
 	position: fixed;
-	top: 60px;
-	z-index: 5000;
+	top: 110px;
+	z-index: 1000;
 	width: 50px;
 	background-color: #4C4C4C;
 	color: #FFFFFF;
@@ -59,7 +58,7 @@
 	top: 18px;
 	text-transform: uppercase;
 	font-weight: bold;
-	font-family: 'Nanum Gothic';
+	font-family: 'Apple SD Gothic Neo', 'Nanum Gothic';
 	display: block;
 	width: 50px;
 }
@@ -68,7 +67,7 @@
 	height: 100% !important;
 	background: #333333;
 	box-shadow: none;
-	z-index: 500;
+	z-index: 5000;
 	left:-275px;
 }
 #sidepanel.unpushed {
@@ -121,6 +120,8 @@
   display: none;
 }
 
+#sidepanel .fileinfo{font-size: 9px; display: block; margin: 5px auto;}
+
 #sidepanel .item span.alignleft{display: block; float: left; position: relative; top: 5px;}
 /*--- Menu Color ---*/
 #sidepanel .header.item {
@@ -133,6 +134,7 @@
 #sidepanel .item,
 #sidepanel .item > a {
   color: #FFFFFF;
+  text-decoration: none;
 }
 #sidepanel .item .item,
 #sidepanel .item .item > a {

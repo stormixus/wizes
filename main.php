@@ -7,7 +7,7 @@
 
 <section id="top">
 <?php
-$eletop = getDbData($table['laymeta'],'position="top" and page='.$_HP['uid'],'*');
+$eletop = getDbData($table['laymeta'],'position="top" and page="'.$pageindex.'"','*');
 if($eletop['d_regis']&&!$_themePage){
 	$elett = unserialize($eletop['value']);
 	include  $g['path_layout'].$d['layout']['dir'].'/_cross/top/'.$elett['type'].'.php';
@@ -26,22 +26,23 @@ if($eletop['d_regis']&&!$_themePage){
 
 
 <div class="clearfix"></div>
-
-
-<div id="wizes" data-page="<?php echo $_HP['uid']?>">
+<div id="wizes" data-page="<?php echo $pageindex?>">
 	<div class="container">
-		<div class="row sortable">
-			<?php if(!$_themePage):?>
-			<?php
-			$eleindex = getDbData($table['laymeta'],'position="index" and page='.$_HP['uid'],'*');
-			$eleindex = unserialize($eleindex['value']);
-			foreach($eleindex as $E) {
-				$ele = getDbData($table['laymeta'],'d_regis='.$E,'*');
-				$eleval = unserialize($ele['value']);
-				include  $g['path_layout'].$d['layout']['dir'].'/_elements/'.$eleval['type'].'.php';
-			}
-			?>
-			<?php endif?>
+		<div class="row">
+			<section class="sortable">
+				<?php if(!$_themePage):?>
+				<?php
+				echo $ppp;
+				$eleindex = getDbData($table['laymeta'],'position="index" and page="'.$pageindex.'"','*');
+				$eleindex = unserialize($eleindex['value']);
+				foreach($eleindex as $E) {
+					$ele = getDbData($table['laymeta'],'uid='.$E,'*');
+					$eleval = unserialize($ele['value']);
+					include  $g['path_layout'].$d['layout']['dir'].'/_elements/'.$eleval['type'].'.php';
+				}
+				?>
+				<?php endif?>
+			</section>
 			<?php include __KIMS_CONTENT__?>
 		</div>
 	</div>
@@ -50,10 +51,9 @@ if($eletop['d_regis']&&!$_themePage){
 <?php if($my['admin']&&!$_themePage):?>
 <div class="container">
 	<div class="row">
-		<div class="iconbar iconbar-horizontal pull-right elepostnav" style="margin-right:0px !important;">
+		<div class="iconbar iconbar-horizontal pull-right elepostnav" style="margin-right:0px !important;padding-right:10px;">
 		  <ul>
 		    <li><a href="javascript:;" class="glyphicon glyphicon-remove-circle initele" data-toggle="tooltip" title="초기화"></a></li>
-		    <li><a href="javascript:;" class="glyphicon glyphicon-pushpin postele" data-toggle="tooltip" title="템플릿으로 저장"></a></li>
 		    <li><a href="javascript:;" class="glyphicon glyphicon-floppy-disk savele" data-toggle="tooltip" title="저장"></a></li>
 		  </ul>
 		</div>
